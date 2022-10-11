@@ -32,3 +32,5 @@ pub fn compute_index(shape: Shape, index: Shape) -> Result<usize, &'static str> 
     }
     Ok(tmp)
 }
+
+
