@@ -1,7 +1,12 @@
 mod shape;
 mod tensor;
 
-pub fn test() {
+pub use shape::Shape;
+pub use tensor::*;
+
+
+
+fn test() {
     let t1 = tensor::full(&[3, 3, 3], 'h');
     let t3 = tensor::range(&[3, 3, 3]);
     let t2 = t3.get_sub(&[2]).unwrap();
