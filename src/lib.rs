@@ -1,6 +1,7 @@
 mod shape;
 mod tensor;
 
+pub use shape::Shape;
 
 fn test() {
     let t1 = tensor::full(&[3, 3, 3], 'h');
