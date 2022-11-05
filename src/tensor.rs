@@ -140,6 +140,19 @@ mod ops {
         }
         Ok(new_tensor)
     }
+    pub fn transpose<T: Clone + Default>(x: &Tensor<T>) -> Result<Tensor<T>, &'static str> {
+        if x.shape.len() != 2 {
+            return Err("To transpose a tensor the rank must be 2");
+        }
+        let mut new_tensor = create::full(&[x.shape[1], x.shape[0]], T::default());
+        for i in 0..new_tensor.shape[0] {
+            for j in 0..new_tensor.shape[1] {
+                let _ = new_tensor.set_value(&[i, j], x.get_value(&[j, i]).expect("Something terribly
+                    wrong has happened with the transpose function"));
+            }
+        }
+        Ok(new_tensor)
+    }
 }
 
 mod create {
