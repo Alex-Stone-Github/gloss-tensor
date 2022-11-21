@@ -4,7 +4,7 @@ mod tensor;
 pub use shape::Shape;
 pub use tensor::*;
 
-fn test() {
+pub fn test() {
     let t1 = tensor::full(&[3, 3, 3], 'h');
     let t3 = tensor::range(&[3, 3, 3]);
     let t2 = t3.get_sub(&[2]).unwrap();
@@ -36,6 +36,20 @@ fn test() {
     println!("{:?}", identity);
     println!("{:?}", mult);
     println!("{:?}", output);
+
+    let x = tensor::range(&[2, 2]);
+    println!("{:?}", x);
+    println!("{:?}", tensor::transpose(&x));
+
+
+    {
+        let w = tensor::random_norm(&[3, 3]);
+        let x = tensor::random_norm(&[3, 1]);
+        let y = tensor::matmul(&w, &x);
+        println!("{:?}", w);
+        println!("{:?}", x);
+        println!("{:?}", y);
+    }
 }
 
 

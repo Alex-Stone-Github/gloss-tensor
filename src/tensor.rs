@@ -192,6 +192,14 @@ mod create {
         }
         new_tensor
     }
+    pub fn random_norm(shape: Shape) -> Tensor<f64> {
+        let size = compute_size_of_shape(shape);
+        let mut vec = Vec::with_capacity(size);
+        for i in 0..size {
+            vec.push(rand::random::<f64>());
+        }
+        from_flat_vec(shape, vec).unwrap()
+    }
 }
 
 
